@@ -1,6 +1,136 @@
 doctype html
 html(lang="ru")
-    include partails/head.pug
-    body
+	include partails/head.pug
+	body
+		.catalog-page.catalog
 
-        include partails/scripts.pug
+		.catalog__breadcrumbs.breadcrums
+			.breadcrums__item
+				a(href="")
+			.breadcrums__item
+				span
+
+		.catalog__title Металлочерепица
+
+		.catalog__content.container
+			// START CATALOG FILTER
+			aside.catalog__filter.filter
+				.filter
+					.filter__price
+					.filter__colors.f-colors
+						.f-colors
+							.f-colors__item.f-color
+								input.f-color__input
+								.f-color__square
+					.filter__colors-list.f-color-list
+						each i in [1,2,3,4]
+							.f-color-list__color.f-color
+								input.f-color__input
+								.f-color__square
+								.f-color__name COLOR_NAME
+					.filter__category.filter-cat
+						each i in [1,2,3]
+							.filter-cat__item
+								.filter-cat__custom
+								.filter-cat__name Профиль
+				.catalog__menu.catalog-menu
+					ul.catalog-menu__list
+						each i in ['Забор', 'Фасад', 'Кровля']
+							li.catalog-menu__item
+								p.catalog-menu__title=i
+								.catalog-menu__hidden-block
+									each i in [1,2,3]
+										ul.catalog-menu__sublist
+											p.catalog-menu__subtitle Заголовок ссылок
+											ul.catalog-menu__links
+												each i in [1,2,3,4,5]
+													li.catalog-menu__link-item
+														a.catalog-menu__link(href="#") Ссылка
+			// END CATALOG FILTER
+
+			// START CATALOG CONTENT
+			.catalog__content
+				// START SORT
+				.catalog__sort.sort
+					.sort__params.sort-params
+						p.sort__title Сортировать:
+						select.sort__select
+							options.sort__option По цене
+							options.sort__option По скидке
+					.sort__counts.sort-counts
+						p.sort__title Показывать по:
+						select.sort__select
+							options.sort__option 15
+							options.sort__option 30
+					.sort__views.view-change
+						.view-change__icon
+						.view-change__icon
+				//END SORT
+
+				// START PRODUCTS
+				.catalog__products.products
+					each i in [1,2,3,4,5,6,7]
+						//START PRODUCT
+						.products__item.product.product--view-grid
+							.product__img-wrapp
+								img.product__img(src="" alt="")
+							p.product__title Металлочерепица модульная квинта Uno GL c 3D резом 0,5 Velur20 RAL 8017
+							.product__sale.product-sale
+								p.product-sale__text 550 ₽/м2
+								p.product-sale__percent -20%
+							footer.product__footer
+								p.product__price 233 ₽/м2
+								.product__icons
+									.product__icon
+									.product__icon
+									.product__icon
+						//END PRODUCT
+
+					each i in [1,2,3,4,5,6,7]
+						//START PRODUCT
+						.products__item.product.product--view-row
+							.product__left
+								.product__img-wrapp
+									img.product__img(src="" alt="")
+								.product__info
+									p.product__title Металлочерепица модульная квинта Uno GL c 3D резом 0,5 Velur20 RAL 8017
+									.product__icons
+										.product__icon
+										.product__icon
+										.product__icon
+							.product__right
+								.product__sale.product-sale
+									p.product-sale__text 550 ₽/м2
+									p.product-sale__percent -20%
+								p.product__price 233 ₽/м2
+								p.product__btn-buy
+									span Купить
+
+							p.product__old-price
+								p 550 ₽/м2
+								span.product__percent - 20%
+							footer.product__footer
+								p.product__price 233 ₽/м2
+						//END PRODUCT
+
+
+				//END PRODUCTS
+
+				//START PAGINATION
+				.pagination
+					ul.pagination__list
+						li.pagination__item.is-current
+							span.pagination__link 1
+						li.pagination__item
+							span.pagination__link 2
+						li.pagination__item
+							span.pagination__link 3
+						li.pagination__item
+							span.pagination__link ...
+						li.pagination__item
+							span.pagination__link 292
+				//END PAGINTAION
+			// END CATALOG CONTENT
+
+
+		include partails/scripts.pug
