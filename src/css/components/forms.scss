@@ -1,0 +1,66 @@
+.custom-field {
+    $field: &;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    position: relative;
+    cursor: pointer;
+
+    &__input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: #333333;
+        opacity: 0;
+
+
+        &[type="radio"] + #{$field}__custom-input {
+            border-radius: 50%;
+            .custom-field__sign {
+                background-color: #f16a00;
+                border-radius: 50%;
+            }
+        }
+        &:checked + #{$field}__custom-input .custom-field__sign {
+            opacity: 1;
+           background: red;
+        }
+    }
+    &__custom-input {
+        width: 20px;
+        height: 20px;
+        border-radius: 3px;
+        border: 1px solid #999;
+        background-color: #fafafa;
+        position: relative;
+        margin-right: 16px;
+        display: block;
+
+        .custom-field__sign {
+            content: '';
+            display: inline-block;
+            width: 80%;
+            height: 80%;
+
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            fill: #f16a00;
+            opacity: 0;
+        }
+    }
+
+    &__text {
+        color: currentColor;
+        flex: 1 0;
+
+        a {
+            color: #3b65c0;
+            text-decoration: none;
+        }
+    }
+}
