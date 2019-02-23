@@ -1,0 +1,219 @@
+.filter {
+    $filter: &;
+
+    &__section {
+        border-bottom: 1px solid #d7dee4;
+
+        &.is-opened {
+            #{$filter}__section-header {
+                padding-bottom: 11px;
+            }
+
+            #{$filter}__section-body {
+                display: block;
+            }
+
+            #{$filter}__arrow {
+                transform: rotate(180deg);
+            }
+        }
+    }
+
+    &__section-header {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        position: relative;
+        padding: 20px 0;
+    }
+
+    &__section-body {
+        margin-bottom: 20px;
+        display: none;
+    }
+    &__title {
+        font-size: 15px;
+        font-weight: 600;
+        margin: 0;
+    }
+    &__reset {
+        margin: 0;
+        color: #565b61;
+        font-size: 13px;
+        text-decoration: underline;
+        cursor: pointer;
+        margin-left: 25px;
+    }
+    &__arrow {
+        fill: transparent;
+        stroke: #000;
+        width: 16px;
+        height: 10px;
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+    }
+}
+
+
+.filter-price {
+    &__flex-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        input {
+            width: 40%;
+            font-size: 12px;
+            pointer-events: none;
+            outline: none;
+            border: 1px solid #d7dee4;
+            padding: 7px 10px;
+        }
+    }
+
+    &__slider {
+        margin-bottom: 20px;
+        margin-top: 20px;
+
+        &.noUi-horizontal {
+            height: 3px;
+            background-color: #D7DEE4;
+            border: none;
+            box-shadow: none;
+        }
+
+        .noUi-connect {
+            background-color: #fdcf6d;
+        }
+
+        .noUi-handle {
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            background:  #ff8a02;
+            border: none;
+            box-shadow: none;
+            outline: none;
+            cursor: pointer;
+
+            top: -4px; // выравнивание по центру полосы
+            right: 0 !important; // смещение влево, было -17px
+
+            &::after,
+            &::before {
+                display: none;
+                width: auto;
+                height: auto;
+                background: transparent;
+                left: auto;
+                top: auto;
+            }
+
+            &.noUi-handle-lower::before,
+            &.noUi-handle-upper::before {
+                display: block;
+                font-size: 12px;
+                top: -14px;
+                color: #565b61;
+            }
+
+            &.noUi-handle-lower::before {content: 'от';}
+            &.noUi-handle-upper::before {content: 'до';}
+        }
+
+
+
+        input {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+    }
+}
+
+.filter-cat {
+    &__item {
+        margin-bottom: 10px;
+        color: #565b61;
+        font-size: 14px;
+        font-weight: 400;
+    }
+}
+
+.f-colors {
+    &__row {
+        display: grid;
+        grid-template-columns: repeat(8, 28px);
+    }
+
+    &__check-all {
+        font-size: 14px;
+        margin-bottom: 17px;
+    }
+
+    &__list {
+        margin-top: 20px;
+        max-height: 250px;
+        overflow-y: auto;
+    }
+
+    &__item {
+        margin-bottom: 10px;
+    }
+}
+
+
+.f-color {
+    $f_color: &;
+
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    &__input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        width: 1px;
+        height: 1px;
+
+        &:checked + #{$f_color}__square.with-check-icon::before {
+            opacity: 1;
+        }
+    }
+
+    &__square {
+        width: 28px;
+        height: 28px;
+        margin: 0;
+        display: block;
+        position: relative;
+
+        &.with-check-icon::before {
+            content: '';
+            width: 12px;
+            height: 9px;
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-image: url('../images/check-white.svg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            opacity: 0;
+            pointer-events: none;
+        }
+    }
+
+    &__name {
+        margin-left: 9px;
+        font-size: 13px;
+        text-transform: uppercase;
+    }
+}

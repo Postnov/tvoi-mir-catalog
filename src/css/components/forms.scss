@@ -25,17 +25,16 @@
         }
         &:checked + #{$field}__custom-input .custom-field__sign {
             opacity: 1;
-           background: red;
         }
     }
     &__custom-input {
-        width: 20px;
-        height: 20px;
+        width: 16px;
+        height: 16px;
         border-radius: 3px;
-        border: 1px solid #999;
-        background-color: #fafafa;
+        border: 1px solid #b6bcc0;
+        background-color: #fff;
         position: relative;
-        margin-right: 16px;
+        margin-right: 8px;
         display: block;
 
         .custom-field__sign {
@@ -49,7 +48,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
 
-            fill: #f16a00;
+            fill: transparent;
             opacity: 0;
         }
     }

@@ -1,0 +1,118 @@
+.catalog {
+    &__title {
+        margin-top: 0;
+        font-size: 25px;
+        line-height: 1.3;
+        margin-bottom: 40px;
+    }
+
+    &__container {
+        display: grid;
+        grid-template-columns: 20% 1fr;
+        grid-column-gap: 20px;
+    }
+}
+
+
+.catalog-menu {
+    $cat_menu: &;
+    background-color: $grayBg;
+    padding: 26px 20px;
+    margin-top: 30px;
+
+    &__list {
+        padding-left: 0;
+        list-style: none;
+        margin: 0;
+    }
+
+    &__item {
+        &.is-opened {
+            #{$cat_menu}__arrow {
+                stroke: #005cc2;
+                transform: rotate(0deg);
+            }
+
+            #{$cat_menu}__title {
+                color: #005cc2;
+            }
+
+            #{$cat_menu}__hidden-block {
+                display: block;
+            }
+
+        }
+
+    }
+    &__item-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+    }
+
+    &__title {
+        margin: 0;
+        text-transform: uppercase;
+        padding: 11px 0;
+        cursor: pointer;
+        font-weight: 600;
+    }
+
+    &__arrow {
+        width: 18px;
+        height: 12px;
+        fill: transparent;
+        transition: .3s all;
+
+        transform: rotate(-90deg);
+        stroke: #000;
+        stroke-width: 2px;
+    }
+
+    &__hidden-block {
+        display: none;
+    }
+
+    &__sublist {
+        padding-left: 0;
+        list-style: none;
+        color: #565b61;
+        font-size: 14px;
+
+        &:first-child {
+            margin-top: 10px;
+        }
+
+        &:not(:last-child) {
+            margin-bottom: 20px;
+        }
+    }
+    &__subtitle {
+        margin: 0;
+        font-weight: 900;
+    }
+
+    &__links {
+        margin-top: 12px;
+        padding-left: 0;
+        list-style: none;
+    }
+
+    &__link-item {
+        &:not(:last-child) {
+            margin-bottom: 6px;
+        }
+    }
+
+    &__link {
+        color: #565b61;
+        text-decoration: none;
+        border-bottom: 1px solid;
+        font-weight: 400;
+
+        &:hover {
+            border-bottom: none;
+        }
+    }
+}
