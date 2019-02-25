@@ -4,48 +4,86 @@ html(lang="ru")
 	body
 		.catalog-page.catalog
 
-		.catalog__breadcrumbs.breadcrums
-			.breadcrums__item
-				a(href="")
-			.breadcrums__item
-				span
+		.breadcrumb.container
+			.breadcrumb_item
+				a(href="") Кровельные материалы
+			.breadcrumb_item
+				span Металлочерепица
 
-		.catalog__title Металлочерепица
+		h1.catalog__title.container Металлочерепица
 
-		.catalog__content.container
+		.catalog__container.container
 			// START CATALOG FILTER
 			aside.catalog__filter.filter
 				.filter
-					.filter__price
-					.filter__colors.f-colors
-						.f-colors
-							.f-colors__item.f-color
-								input.f-color__input
-								.f-color__square
-					.filter__colors-list.f-color-list
-						each i in [1,2,3,4]
-							.f-color-list__color.f-color
-								input.f-color__input
-								.f-color__square
-								.f-color__name COLOR_NAME
-					.filter__category.filter-cat
-						each i in [1,2,3]
-							.filter-cat__item
-								.filter-cat__custom
-								.filter-cat__name Профиль
+					.filter__section.filter-price.is-opened
+						.filter__section-header
+							p.filter__title Цена
+
+						.filter__section-body
+							.filter-price__slider(id="price-range")
+							.filter-price__flex-row
+								input.filter-price__field(id="price-down" type="text" value="0 р.")
+								input.filter-price__field(id="price-up" type="text" value="100 000 р.")
+					.filter__section.f-colors.is-opened.js-section
+						.filter__section-header.js-section-trigger
+							p.filter__title Цвет
+							p.filter__reset Сбросить
+							+icon('arrow-down', 'filter__arrow')
+
+						.filter__section-body.js-section-target
+							.f-colors__row
+								label.f-colors__item.f-color
+									input.f-color__input(type="checkbox")
+									.f-color__square.with-check-icon(style="background-color:#000;")
+								each i in [0,1,2,3,4,5,6]
+									label.f-colors__item.f-color
+										input.f-color__input(type="checkbox")
+										.f-color__square.with-check-icon(style="background-color:#f"+i+"0;")
+
+							.f-colors__list
+								label.f-colors__check-all.custom-field
+									input.custom-field__input(type="checkbox")
+									span.custom-field__custom-input
+										+icon('check','custom-field__sign')
+									span.custom-field__text Выбрать все
+
+								each i in [1,2,3,4,5,6,7,8]
+									label.f-colors__item.f-color
+										input.f-color__input(type="checkbox")
+										.f-color__square(style="background-color:#f"+i+"0;")
+										.f-color__name RAL 6018
+
+					each i in ['Профиль','Вид поверхности','Принт']
+						.filter__section.filter-cat.js-section
+							.filter__section-header.js-section-trigger
+								p.filter__title=i
+								+icon('arrow-down', 'filter__arrow')
+
+							.filter__section-body.js-section-target
+								each i in ['Стандартный', 'Эксклюзивный', 'Модульная черепица']
+									label.filter-cat__item.custom-field
+										input.custom-field__input(type="checkbox")
+										span.custom-field__custom-input
+											+icon('check','custom-field__sign')
+										span.custom-field__text=i
+
 				.catalog__menu.catalog-menu
 					ul.catalog-menu__list
-						each i in ['Забор', 'Фасад', 'Кровля']
-							li.catalog-menu__item
-								p.catalog-menu__title=i
-								.catalog-menu__hidden-block
-									each i in [1,2,3]
+						each block in catLinks
+							li.catalog-menu__item.js-section
+								.catalog-menu__item-header.js-section-trigger
+									p.catalog-menu__title=block.title
+									+icon('arrow-down', 'catalog-menu__arrow')
+
+								.catalog-menu__hidden-block.js-section-target
+									each sublist in block.sublists
 										ul.catalog-menu__sublist
-											p.catalog-menu__subtitle Заголовок ссылок
+											p.catalog-menu__subtitle=sublist.title
 											ul.catalog-menu__links
-												each i in [1,2,3,4,5]
+												each link in sublist.links
 													li.catalog-menu__link-item
-														a.catalog-menu__link(href="#") Ссылка
+														a.catalog-menu__link(href="#")=link
 			// END CATALOG FILTER
 
 			// START CATALOG CONTENT
@@ -54,24 +92,24 @@ html(lang="ru")
 				.catalog__sort.sort
 					.sort__params.sort-params
 						p.sort__title Сортировать:
-						select.sort__select
-							options.sort__option По цене
-							options.sort__option По скидке
+						select.sort__select.sort__select--sort.js-custom_select
+							option.sort__option(selected) По цене
+							option.sort__option По скидке
 					.sort__counts.sort-counts
 						p.sort__title Показывать по:
-						select.sort__select
-							options.sort__option 15
-							options.sort__option 30
+						select.sort__select.sort__select--count.js-custom_select
+							option.sort__option 15
+							option.sort__option 30
 					.sort__views.view-change
-						.view-change__icon
-						.view-change__icon
+						+icon('view-columns', 'view-change__icon active')
+						+icon('view-rows', 'view-change__icon')
 				//END SORT
 
 				// START PRODUCTS
-				.catalog__products.products
+				.catalog__products.products.products--view-grid
 					each i in [1,2,3,4,5,6,7]
 						//START PRODUCT
-						.products__item.product.product--view-grid
+						.products__item.product
 							.product__img-wrapp
 								img.product__img(src="" alt="")
 							p.product__title Металлочерепица модульная квинта Uno GL c 3D резом 0,5 Velur20 RAL 8017
@@ -88,7 +126,7 @@ html(lang="ru")
 
 					each i in [1,2,3,4,5,6,7]
 						//START PRODUCT
-						.products__item.product.product--view-row
+						.products__item.product
 							.product__left
 								.product__img-wrapp
 									img.product__img(src="" alt="")
@@ -105,19 +143,13 @@ html(lang="ru")
 								p.product__price 233 ₽/м2
 								p.product__btn-buy
 									span Купить
-
-							p.product__old-price
-								p 550 ₽/м2
-								span.product__percent - 20%
-							footer.product__footer
-								p.product__price 233 ₽/м2
 						//END PRODUCT
 
 
 				//END PRODUCTS
 
 				//START PAGINATION
-				.pagination
+				.pagination.col-lg-12
 					ul.pagination__list
 						li.pagination__item.is-current
 							span.pagination__link 1

@@ -1,6 +1,9 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    //style select
+    renderSelects({ selector: '.js-custom_select'});
+
     // PRICE RANGE
     let priceRange = document.getElementById('price-range');
     let downPriceInput = document.getElementById('price-down');
