@@ -2,167 +2,254 @@ doctype html
 html(lang="ru")
 	include partails/head.pug
 	body
-		.catalog-page.catalog
+		.catalog-page.catalog.container
 
-		.breadcrumb.container
-			.breadcrumb_item
-				a(href="") Кровельные материалы
-			.breadcrumb_item
-				span Металлочерепица
+			.breadcrumb
+				.breadcrumb_item
+					a(href="") Кровельные материалы
+				.breadcrumb_item
+					span Металлочерепица
 
-		h1.catalog__title.container Металлочерепица
+			h1.catalog__title Металлочерепица
 
-		.catalog__container.container
-			// START CATALOG FILTER
-			aside.catalog__filter.filter
-				.filter
-					.filter__section.filter-price.is-opened
-						.filter__section-header
-							p.filter__title Цена
+			.catalog__container.row
+				// START CATALOG FILTER
+				.filter-mobile-trigger.js-filter-mobile-toggle
+					span Подбор по параметрам
+					+icon('arrow-down')
+				.filter-mobile.js-filter-mobile-target
+					.filter-mobile__header
+						.filter-mobile__return.js-filter-mobile-toggle
+							+icon('arrow-down', 'filter-mobile__arrow')
+						.filter-mobile__title Подбор по параметрам
 
-						.filter__section-body
-							.filter-price__slider(id="price-range")
-							.filter-price__flex-row
-								input.filter-price__field(id="price-down" type="text" value="0 р.")
-								input.filter-price__field(id="price-up" type="text" value="100 000 р.")
-					.filter__section.f-colors.is-opened.js-section
-						.filter__section-header.js-section-trigger
-							p.filter__title Цвет
-							p.filter__reset Сбросить
-							+icon('arrow-down', 'filter__arrow')
+					.filter-mobile__body
+						.filter__params
+							.filter__section.filter-price.js-section
+								.filter__section-header.js-section-trigger
+									p.filter__title Цена
+									+icon('arrow-down', 'filter__arrow')
 
-						.filter__section-body.js-section-target
-							.f-colors__row
-								label.f-colors__item.f-color
-									input.f-color__input(type="checkbox")
-									.f-color__square.with-check-icon(style="background-color:#000;")
-								each i in [0,1,2,3,4,5,6]
-									label.f-colors__item.f-color
-										input.f-color__input(type="checkbox")
-										.f-color__square.with-check-icon(style="background-color:#f"+i+"0;")
+								.filter__section-body.js-section-target
+									each i in ['Показать все', 'до 1000 р.', 'до 2000 р.', 'до 3000 р.']
+										label.filter-cat__item.custom-field
+											input.custom-field__input(type="checkbox")
+											span.custom-field__custom-input
+												+icon('check','custom-field__sign')
+											span.custom-field__text=i
+							.filter__section.f-colors.js-section
+								.filter__section-header.js-section-trigger
+									p.filter__title Цвет
+									+icon('arrow-down', 'filter__arrow')
 
-							.f-colors__list
-								label.f-colors__check-all.custom-field
-									input.custom-field__input(type="checkbox")
-									span.custom-field__custom-input
-										+icon('check','custom-field__sign')
-									span.custom-field__text Выбрать все
+								.filter__section-body.js-section-target
+									.f-colors__row
+										label.f-colors__item.f-color
+											input.f-color__input(type="checkbox")
+											span.f-color__square.f-color__square--multi-color
+										each i in [0,1,2,3,4,5,6]
+											label.f-colors__item.f-color
+												input.f-color__input(type="checkbox")
+												span.f-color__square(style="background-color:#f"+i+"0;")
 
-								each i in [1,2,3,4,5,6,7,8]
-									label.f-colors__item.f-color
-										input.f-color__input(type="checkbox")
-										.f-color__square(style="background-color:#f"+i+"0;")
-										.f-color__name RAL 6018
+									.f-colors__list
+										label.f-colors__check-all.custom-field
+											input.custom-field__input(type="checkbox")
+											span.custom-field__custom-input
+												+icon('check','custom-field__sign')
+											span.custom-field__text Выбрать все
 
-					each i in ['Профиль','Вид поверхности','Принт']
-						.filter__section.filter-cat.js-section
+										each i in [1,2,3,4,5,6,7,8]
+											label.f-colors__item.f-color
+												input.f-color__input(type="checkbox")
+												span.f-color__square(style="background-color:#f"+i+"0;")
+												span.f-color__name RAL 6018
+
+							each i in ['Профиль','Вид поверхности','Принт']
+								.filter__section.filter-cat.js-section
+									.filter__section-header.js-section-trigger
+										p.filter__title=i
+										+icon('arrow-down', 'filter__arrow')
+
+									.filter__section-body.js-section-target
+										each i in ['Стандартный', 'Эксклюзивный', 'Модульная черепица']
+											label.filter-cat__item.custom-field
+												input.custom-field__input(type="checkbox")
+												span.custom-field__custom-input
+													+icon('check','custom-field__sign')
+												span.custom-field__text=i
+
+					.filter-mobile__footer
+						button.filter-mobile__apply-btn.js-filter-mobile-toggle.col-xs-6 Применить
+						button.filter-mobile__reset-btn.js-filter-mobile-toggle.col-xs-6 Сбросить
+
+
+
+				aside.catalog__filter.filter.col-md-3
+					.filter__params
+						.filter__section.filter-price.is-opened
+							.filter__section-header
+								p.filter__title Цена
+
+							.filter__section-body
+								.filter-price__slider(id="price-range")
+								.filter-price__flex-row
+									input.filter-price__field(id="price-down" type="text" value="0 р.")
+									input.filter-price__field(id="price-up" type="text" value="100 000 р.")
+						.filter__section.f-colors.is-opened.js-section
 							.filter__section-header.js-section-trigger
-								p.filter__title=i
+								p.filter__title Цвет
+								p.filter__reset Сбросить
 								+icon('arrow-down', 'filter__arrow')
 
 							.filter__section-body.js-section-target
-								each i in ['Стандартный', 'Эксклюзивный', 'Модульная черепица']
-									label.filter-cat__item.custom-field
+								.f-colors__row
+									label.f-colors__item.f-color
+										input.f-color__input(type="checkbox")
+										span.f-color__square.f-color__square--multi-color
+									each i in [0,1,2,3,4,5,6]
+										label.f-colors__item.f-color
+											input.f-color__input(type="checkbox")
+											span.f-color__square(style="background-color:#f"+i+"0;")
+
+								.f-colors__list
+									label.f-colors__check-all.custom-field
 										input.custom-field__input(type="checkbox")
 										span.custom-field__custom-input
 											+icon('check','custom-field__sign')
-										span.custom-field__text=i
+										span.custom-field__text Выбрать все
 
-				.catalog__menu.catalog-menu
-					ul.catalog-menu__list
-						each block in catLinks
-							li.catalog-menu__item.js-section
-								.catalog-menu__item-header.js-section-trigger
-									p.catalog-menu__title=block.title
-									+icon('arrow-down', 'catalog-menu__arrow')
+									each i in [1,2,3,4,5,6,7,8]
+										label.f-colors__item.f-color
+											input.f-color__input(type="checkbox")
+											span.f-color__square(style="background-color:#f"+i+"0;")
+											span.f-color__name RAL 6018
 
-								.catalog-menu__hidden-block.js-section-target
-									each sublist in block.sublists
-										ul.catalog-menu__sublist
-											p.catalog-menu__subtitle=sublist.title
-											ul.catalog-menu__links
-												each link in sublist.links
-													li.catalog-menu__link-item
-														a.catalog-menu__link(href="#")=link
-			// END CATALOG FILTER
+						each i in ['Профиль','Вид поверхности','Принт']
+							.filter__section.filter-cat.js-section
+								.filter__section-header.js-section-trigger
+									p.filter__title=i
+									+icon('arrow-down', 'filter__arrow')
 
-			// START CATALOG CONTENT
-			.catalog__content
-				// START SORT
-				.catalog__sort.sort
-					.sort__params.sort-params
-						p.sort__title Сортировать:
-						select.sort__select.sort__select--sort.js-custom_select
-							option.sort__option(selected) По цене
-							option.sort__option По скидке
-					.sort__counts.sort-counts
-						p.sort__title Показывать по:
-						select.sort__select.sort__select--count.js-custom_select
-							option.sort__option 15
-							option.sort__option 30
-					.sort__views.view-change
-						+icon('view-columns', 'view-change__icon active')
-						+icon('view-rows', 'view-change__icon')
-				//END SORT
+								.filter__section-body.js-section-target
+									each i in ['Стандартный', 'Эксклюзивный', 'Модульная черепица']
+										label.filter-cat__item.custom-field
+											input.custom-field__input(type="checkbox")
+											span.custom-field__custom-input
+												+icon('check','custom-field__sign')
+											span.custom-field__text=i
 
-				// START PRODUCTS
-				.catalog__products.products.products--view-grid
-					each i in [1,2,3,4,5,6,7]
-						//START PRODUCT
-						.products__item.product
-							.product__img-wrapp
-								img.product__img(src="" alt="")
-							p.product__title Металлочерепица модульная квинта Uno GL c 3D резом 0,5 Velur20 RAL 8017
-							.product__sale.product-sale
-								p.product-sale__text 550 ₽/м2
-								p.product-sale__percent -20%
-							footer.product__footer
-								p.product__price 233 ₽/м2
-								.product__icons
-									.product__icon
-									.product__icon
-									.product__icon
-						//END PRODUCT
+					.catalog__menu.catalog-menu
+						ul.catalog-menu__list
+							each block in catLinks
+								li.catalog-menu__item.js-section
+									.catalog-menu__item-header.js-section-trigger
+										p.catalog-menu__title=block.title
+										+icon('arrow-down', 'catalog-menu__arrow')
 
-					each i in [1,2,3,4,5,6,7]
-						//START PRODUCT
-						.products__item.product
-							.product__left
-								.product__img-wrapp
-									img.product__img(src="" alt="")
-								.product__info
-									p.product__title Металлочерепица модульная квинта Uno GL c 3D резом 0,5 Velur20 RAL 8017
-									.product__icons
-										.product__icon
-										.product__icon
-										.product__icon
-							.product__right
+									.catalog-menu__hidden-block.js-section-target
+										each sublist in block.sublists
+											.catalog-menu__sublist
+												p.catalog-menu__subtitle=sublist.title
+												ul.catalog-menu__links
+													each link in sublist.links
+														li.catalog-menu__link-item
+															a.catalog-menu__link(href="#")=link
+				// END CATALOG FILTER
+
+				// START CATALOG CONTENT
+				.catalog__content.col-md-9.col-sm-12
+					// START SORT
+					.catalog__sort.sort
+						.sort__params.sort-params
+							p.sort__title Сортировать:
+							select.sort__select.sort__select--sort.js-custom_select
+								option.sort__option(selected) По цене
+								option.sort__option По скидке
+						.sort__counts.sort-counts
+							p.sort__title Показывать по:
+							select.sort__select.sort__select--count.js-custom_select
+								option.sort__option 15
+								option.sort__option 30
+						.sort__views.view-change
+							.view-change__item.js-view-change.is-active(data-view="cols")
+								+icon('view-columns', 'view-change__icon')
+							.view-change__item.js-view-change(data-view="rows")
+								+icon('view-rows', 'view-change__icon')
+					//END SORT
+
+					// START PRODUCTS
+					.catalog__products.products.js-products-tab.is-show(data-view="cols")
+						each i in [1,2,3,4,5,6,7,8,9]
+							//START PRODUCT
+							.products__item.product.product--col.col-sm-4.col-xs-6
+								span.product__label NEW
+
+								a.product__img-wrapp(href='#')
+									img.product__img(src="images/product-img.jpg" alt="")
+
+								p.product__title
+									a.product__link-wrapp(href='#') Металоочерепица Grandine Стальной шелк 0,5 RR 32 (красная заря)
+
 								.product__sale.product-sale
 									p.product-sale__text 550 ₽/м2
 									p.product-sale__percent -20%
-								p.product__price 233 ₽/м2
-								p.product__btn-buy
-									span Купить
-						//END PRODUCT
+								footer.product__footer
+									p.product__price #[span.price-amount 233] ₽/м2
+									.product__icons
+										.product__icon-wrapp
+											+icon('cart', 'product__icon product__icon--cart')
+										.product__icon-wrapp
+											+icon('heart', 'product__icon product__icon--heart')
+										.product__icon-wrapp
+											img.product__icon.product__icon--stat(src="images/icon-stat.jpg" alt="")
+							//END PRODUCT
+
+					// START PRODUCTS
+					.catalog__products.products.js-products-tab(data-view="rows")
+						each i in [1,2,3,4,5,6,7]
+							//START PRODUCT
+							.products__item.product.product--row.col-md-12
+								.product__left
+									.product__img-wrapp
+										img.product__img(src="images/product-img.jpg" alt="")
+									.product__info
+										p.product__title Металлочерепица модульная квинта Uno GL c 3D резом 0,5 Velur20 RAL 8017
+										.product__icons
+											.product__icon-wrapp
+												+icon('heart', 'product__icon product__icon--heart')
+											.product__icon-wrapp
+												img.product__icon.product__icon--stat(src="images/icon-stat.jpg" alt="")
+								.product__right
+									.product__sale.product-sale
+										p.product-sale__text 550 ₽/м2
+										p.product-sale__percent -20%
+									p.product__price 233 руб./м #[span.metrix-square 2]
+									button.product__btn-buy.btn-buy
+										+icon('cart', 'btn-buy__icon')
+										span Купить
 
 
-				//END PRODUCTS
+							//END PRODUCT
 
-				//START PAGINATION
-				.pagination.col-lg-12
-					ul.pagination__list
-						li.pagination__item.is-current
-							span.pagination__link 1
-						li.pagination__item
-							span.pagination__link 2
-						li.pagination__item
-							span.pagination__link 3
-						li.pagination__item
-							span.pagination__link ...
-						li.pagination__item
-							span.pagination__link 292
-				//END PAGINTAION
-			// END CATALOG CONTENT
+
+					//END PRODUCTS
+
+					//START PAGINATION
+					.pagination.col-lg-12
+						ul.pagination__list
+							li.pagination__item.is-current
+								span.pagination__link 1
+							li.pagination__item
+								span.pagination__link 2
+							li.pagination__item
+								span.pagination__link 3
+							li.pagination__item
+								span.pagination__link ...
+							li.pagination__item
+								span.pagination__link 292
+					//END PAGINTAION
+				// END CATALOG CONTENT
 
 
 		include partails/scripts.pug
