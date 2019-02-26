@@ -2,10 +2,14 @@
 function renderSelects({selector}) {
   const prefix = '_select';
   const selects = document.querySelectorAll(selector);
+  let indexSelectedItem = 0;
 
   for (let i = 0; i < selects.length; i++) {
     let isCustom = selects[i].nextElementSibling;
     if (!isCustom) {
+      const options = selects[i].querySelectorAll('option');
+      options[0].selected = true;
+
       selects[i].classList.add('hide_select');
       let selectClassByName = selects[i].getAttribute('name');
       let takePlaceholder = selects[i].getAttribute('data-placeholder');
@@ -62,6 +66,8 @@ function renderSelects({selector}) {
       let itemsLi = addEventToLi.querySelectorAll('li');
 
       function loopInner(l) {
+        itemsLi[0].classList.add('active');
+
         itemsLi[l].addEventListener('click', function (e) {
           itemsLi.forEach(item => {
             item.classList.remove('active');
