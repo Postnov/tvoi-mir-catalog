@@ -1,17 +1,19 @@
 @import 'base/vars.scss';
 @import 'base/media-mixin.scss';
 
+//libs
+@import 'libs/bootstrap-grid.min.scss';
+// @import 'libs/font-awesome.min.scss';
+@import 'libs/noUISlider.scss';
+@import 'libs/nativejs-select.scss';
+
+
 //base
 @import 'base/base.scss';
 @import 'base/normalize.scss';
 @import 'base/fonts.scss';
 
 
-//libs
-// @import 'libs/bootstrap.min.scss';
-@import 'libs/font-awesome.min.scss';
-@import 'libs/noUISlider.scss';
-@import 'libs/nativejs-select.scss';
 
 
 //components
