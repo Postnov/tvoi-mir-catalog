@@ -1,0 +1,21 @@
+.products {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+    background-color: #fff;
+    z-index: 100;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+
+    @include _350 {
+        box-shadow: none;
+    }
+}
+
+.js-products-tab {
+    display: none;
+
+    &.is-show {
+        display: flex;
+    }
+}

@@ -1,10 +1,16 @@
 .sort {
     display: grid;
-    grid-template-columns: 1fr 25% 15%;
+    grid-template-columns: 1fr 35% 15%;
+    margin-bottom: 20px;
+
+    @include _768 {
+        grid-template-columns: 1fr ;
+    }
 
     &__title {
         font-weight: 600;
         font-size: 15px;
+        margin: 0;
     }
 
     &__select {
@@ -38,12 +44,27 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
+
+    @include _979 {
+        display: none;
+    }
 }
 
 .view-change {
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    user-select: none;
+
+    @include _979 {
+        display: none;
+    }
+
+    &__item {
+        &.is-active {
+            svg {fill: $orange;}
+        }
+    }
 
     &__icon {
         width: 27px;
@@ -52,9 +73,5 @@
 
         margin-left: 14px;
         cursor: pointer;
-
-        &.active {
-            fill: $orange;
-        }
     }
 }
