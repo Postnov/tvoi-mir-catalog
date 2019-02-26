@@ -5,6 +5,11 @@
     flex-wrap: wrap;
     padding: 40px 0;
 
+    li::before,
+    li::after {
+        display: none !important;
+    }
+
     &__list {
         display: flex;
         align-items: center;
@@ -15,14 +20,16 @@
     }
 
     &__item {
-        width: 45px;
-        height: 45px;
+        padding: 0 5px;
+        min-width: 30px;
+        max-width: 40px;
+        height: 30px;
+        border-radius: 3px;
         box-shadow: 0 -1px 0 rgba(65, 133, 0, 0);
-        border: 1px solid #dcdcdc;
         display: flex;
         align-items: center;
         justify-content: center;
-        margin: 0 3px;
+        margin: 0 1px;
         transition: .3s all;
         cursor: pointer;
         position: relative;
@@ -30,6 +37,7 @@
         &:hover,
         &.is-current {
             color: #fff;
+            background-color: $orange;
         }
     }
 
