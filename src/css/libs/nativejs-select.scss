@@ -61,6 +61,11 @@
 
 .select_common .select_items li {
 	padding: 7px 11px;
+
+    li::before,
+    li::after {
+        display: none !important;
+    }
 }
 
 .select_common .select_items li:hover {

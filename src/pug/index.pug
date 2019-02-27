@@ -31,12 +31,10 @@ html(lang="ru")
 									+icon('arrow-down', 'filter__arrow')
 
 								.filter__section-body.js-section-target
-									each i in ['Показать все', 'до 1000 р.', 'до 2000 р.', 'до 3000 р.']
-										label.filter-cat__item.custom-field
-											input.custom-field__input(type="checkbox")
-											span.custom-field__custom-input
-												+icon('check','custom-field__sign')
-											span.custom-field__text=i
+									.filter-price__slider.js-price-range
+									.filter-price__flex-row
+										input.filter-price__field.js-price-down(type="text" value="0 р.")
+										input.filter-price__field.js-price-up(data-max="100000" type="text" value="0")
 							.filter__section.f-colors.js-section
 								.filter__section-header.js-section-trigger
 									p.filter__title Цвет
@@ -53,7 +51,7 @@ html(lang="ru")
 												span.f-color__square(style="background-color:#f"+i+"0;")
 
 									.f-colors__list
-										label.f-colors__check-all.custom-field
+										label.f-colors__check-all.custom-field.js-colors-toggle-all
 											input.custom-field__input(type="checkbox")
 											span.custom-field__custom-input
 												+icon('check','custom-field__sign')
@@ -81,7 +79,7 @@ html(lang="ru")
 
 					.filter-mobile__footer
 						button.filter-mobile__apply-btn.js-filter-mobile-toggle.col-xs-6 Применить
-						button.filter-mobile__reset-btn.js-filter-mobile-toggle.col-xs-6 Сбросить
+						button.filter-mobile__reset-btn.js-filter-mobile-reset.js-filter-mobile-toggle.col-xs-6 Сбросить
 
 
 
@@ -92,10 +90,10 @@ html(lang="ru")
 								p.filter__title Цена
 
 							.filter__section-body
-								.filter-price__slider(id="price-range")
+								.filter-price__slider.js-price-range
 								.filter-price__flex-row
-									input.filter-price__field(id="price-down" type="text" value="0 р.")
-									input.filter-price__field(id="price-up" type="text" value="100 000 р.")
+									input.filter-price__field.js-price-down(type="text" value="0 р.")
+									input.filter-price__field.js-price-up(data-max="100000" type="text" value="0")
 						.filter__section.f-colors.is-opened.js-section
 							.filter__section-header.js-section-trigger
 								p.filter__title Цвет
@@ -113,7 +111,7 @@ html(lang="ru")
 											span.f-color__square(style="background-color:#f"+i+"0;")
 
 								.f-colors__list
-									label.f-colors__check-all.custom-field
+									label.f-colors__check-all.custom-field.js-colors-toggle-all
 										input.custom-field__input(type="checkbox")
 										span.custom-field__custom-input
 											+icon('check','custom-field__sign')
@@ -192,10 +190,10 @@ html(lang="ru")
 									a.product__link-wrapp(href='#') Металоочерепица Grandine Стальной шелк 0,5 RR 32 (красная заря)
 
 								.product__sale.product-sale
-									p.product-sale__text 550 ₽/м2
+									p.product-sale__text 550 #[i.fa.fa-ruble-sign]/м2
 									p.product-sale__percent -20%
 								footer.product__footer
-									p.product__price #[span.price-amount 233] ₽/м2
+									p.product__price #[span.price-amount 233] #[i.fa.fa-ruble-sign]/м2
 									.product__icons
 										.product__icon-wrapp
 											+icon('cart', 'product__icon product__icon--cart')

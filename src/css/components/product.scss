@@ -92,6 +92,7 @@
         line-height: 1.2;
         margin: 10px 0 0;
         flex-grow: 1;
+        cursor: pointer;
 
         @include _600 {
             font-size: 14px;
@@ -104,6 +105,11 @@
         align-items: center;
         justify-content: flex-start;
 
+        .fa.fa-ruble-sign {
+            font-size: 12px;
+            vertical-align: 0px;
+        }
+
         @include _400 {
             justify-content: center;
         }
@@ -112,12 +118,17 @@
     &__price {
         margin: 0;
         position: relative;
+        font-size: 16px;
+
+        .fa.fa-ruble-sign {
+            font-size: 14px;
+            vertical-align: 1px;
+        }
 
         .price-amount {
             font-weight: bold;
-            @include _600 {
-                font-size: 18px;
-            }
+            font-size: 18px;
+            margin-right: 3px;
         }
     }
     &__icons {
@@ -145,7 +156,7 @@
         }
 
         &--stat {vertical-align: 2px;}
-        &--cart:hover {fill: $orange;}
+        &--cart {fill: $orange;}
         &--heart:hover {fill: $blue;}
     }
 
@@ -169,6 +180,10 @@
         transform: scale(1);
         transition: all .3s;
 
+        @include _400 {
+            width: 100%;
+        }
+
         &:hover {
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
             // border: 2px solid #ebeff2;
@@ -185,17 +200,10 @@
             }
         }
 
-        &:nth-child(3n + 2) {
-            border-left: 1px solid rgba(215, 222, 228, .5);
+        &:not(:nth-child(3n + 3)) {
             border-right: 1px solid rgba(215, 222, 228, .5);
 
-            @include _768 {
-                border-left: none;
-                border-right: none;
-            }
-            @include _350 {
-                border: 1px solid rgba(215, 222, 228, .5);
-            }
+            @include _768 { border-right: none;}
         }
 
         @include _768 {

@@ -1,5 +1,6 @@
 .catalog-page {
     max-width: 940px;
+    margin-bottom: 30px;
 }
 
 .catalog {
@@ -30,7 +31,7 @@
 .catalog-menu {
     $cat_menu: &;
     background-color: $grayBg;
-    padding: 26px 20px;
+    padding: 16px 20px 26px;
     margin-top: 30px;
 
     li::before,
@@ -111,7 +112,7 @@
         font-size: 14px;
 
         &:first-child {
-            margin-top: 10px;
+            margin-top: 0;
         }
 
         &:not(:last-child) {
@@ -120,11 +121,11 @@
     }
     &__subtitle {
         margin: 0;
-        font-weight: 900;
+        font-weight: 600;
     }
 
     &__links {
-        margin-top: 12px;
+        margin-top: 8px;
         padding-left: 0;
         list-style: none;
     }
