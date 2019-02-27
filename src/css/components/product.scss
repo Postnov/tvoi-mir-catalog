@@ -1,6 +1,6 @@
 .product {
     $product: &;
-
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
     padding: 26px 20px;
     border-bottom: 1px solid rgba(215, 222, 228, .5);
     transition: all .2s ease-in-out;;

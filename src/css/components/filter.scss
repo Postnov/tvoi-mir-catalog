@@ -25,9 +25,11 @@
 }
 
 .filter-mobile {
+    $filterMobile: &;
     position: fixed;
     top: 0;
     left: -100%;
+
     width: 100%;
     height: 100%;
     background-color: #fff;
@@ -35,16 +37,29 @@
     max-height: 100%;
     overflow-y: auto;
     transition: .5s all;
+    padding-top: 50px;
 
     &.is-show {
         display: block;
         left: 0;
+
+        #{$filterMobile}__header,
+        #{$filterMobile}__footer {
+            left: 0;
+        }
     }
 
     &__header {
         display: flex;
         align-items: stretch;
         flex-wrap: wrap;
+        position: fixed;
+        width: 100%;
+        z-index: 120;
+        top: 0;
+        left: -100%;
+        background-color: #fff;
+        transition: .5s all;
     }
 
     &__return {
@@ -76,11 +91,12 @@
     }
 
     &__footer {
-        // position: absolute;
+        position: fixed;
         z-index: 100;
         bottom: 0;
-        left: 0;
+        left: -100%;
         width: 100%;
+        transition: .5s all;
     }
 
     &__apply-btn,

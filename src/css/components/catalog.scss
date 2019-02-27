@@ -1,6 +1,10 @@
 .catalog-page {
     max-width: 940px;
     margin-bottom: 30px;
+
+    & * {
+        box-sizing: border-box;
+    }
 }
 
 .catalog {
@@ -23,7 +27,11 @@
     }
 
     &__container {
+        box-sizing: border-box;
 
+        & * {
+            box-sizing: inherit;
+        }
     }
 }
 
