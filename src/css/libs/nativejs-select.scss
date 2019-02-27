@@ -52,7 +52,7 @@
 	transform: translateY(100%);
 	left: -1px;
 	right: 0;
-	bottom: -11px;
+	bottom: -1px;
 	z-index: 5;
 	display: none;
 	padding-left: 0;
@@ -61,11 +61,10 @@
 
 .select_common .select_items li {
 	padding: 7px 11px;
-
-    li::before,
-    li::after {
-        display: none !important;
-    }
+}
+.select_common .select_items li::after,
+.select_common .select_items li::before {
+	display: none !important;
 }
 
 .select_common .select_items li:hover {
